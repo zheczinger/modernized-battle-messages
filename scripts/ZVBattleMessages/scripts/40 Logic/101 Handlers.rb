@@ -10,7 +10,7 @@ module Battle
 
           unless no_message
             text_index = stat_text_index(amount, power)
-            @scene.zv_log_battle_message(parse_text_with_pokemon(19, TEXT_POS[stat][text_index], target))
+            @scene.zv_log_message(parse_text_with_pokemon(19, TEXT_POS[stat][text_index], target))
           end
         end
       end

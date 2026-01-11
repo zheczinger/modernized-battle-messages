@@ -5,9 +5,9 @@ module Battle
         return super unless Configs.zv_battle_msg.replace_effectiveness
 
         if effectiveness > 1
-          scene.zv_log_battle_message(parse_text_with_pokemon(19, 6, target))
+          scene.zv_log_message(parse_text_with_pokemon(19, 6, target))
         elsif effectiveness > 0 && effectiveness < 1
-          scene.zv_log_battle_message(parse_text_with_pokemon(19, 15, target))
+          scene.zv_log_message(parse_text_with_pokemon(19, 15, target))
         end
       end
 
@@ -16,7 +16,7 @@ module Battle
         return unless critical_hit?
 
         message = actual_targets.size == 1 ? parse_text(18, 84) : parse_text_with_pokemon(19, 384, target)
-        scene.zv_log_battle_message(message)
+        scene.zv_log_message(message)
       end
 
       private
@@ -27,7 +27,7 @@ module Battle
         return targets.select do |target|
           if target_immune?(user, target)
             scene.visual.zv_show_unaffected_animation(target)
-            scene.zv_log_battle_message(parse_text_with_pokemon(19, 210, target))
+            scene.zv_log_message(parse_text_with_pokemon(19, 210, target))
             next false
           elsif move_blocked_by_target?(user, target)
             next false
@@ -56,9 +56,9 @@ module Battle
           if accuracy_dice >= hit_chance
             if hit_chance > 0
               scene.visual.zv_show_miss_animation(target)
-              scene.zv_log_battle_message(parse_text_with_pokemon(19, 213, target))
+              scene.zv_log_message(parse_text_with_pokemon(19, 213, target))
             else
-              scene.zv_log_battle_message(parse_text_with_pokemon(19, 24, target))
+              scene.zv_log_message(parse_text_with_pokemon(19, 24, target))
             end
             next false
           end
