@@ -1,5 +1,5 @@
 # zhec's Battle Log
-# https://github.com/zheczinger/battle-log
+# https://github.com/zheczinger/psdk-battle-log
 module Battle
   class Scene
     module ZVBattleMsgZVBattleLog
