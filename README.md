@@ -1,20 +1,19 @@
 # Modernized Battle Messages for PSDK
-![Plugin Version](https://img.shields.io/badge/version-0.5.1-blue?style=for-the-badge)
+![GitHub Release](https://img.shields.io/github/v/release/zheczinger/psdk-modernized-battle-messages?display_name=release&color=blue&style=for-the-badge)
 ![PSDK Version](https://img.shields.io/badge/psdk-.26.50+-6961F6?style=for-the-badge)
 
 > [!WARNING]
-> If you have v0.4.0 or an older version of this plugin, and your PSDK version is .26.50 or newer, then you must upgrade your plugin. Please uninstall your older version of the plugin first.
+> If you have v0.4.0 or an older version of this plugin, and your PSDK version is .26.50 or newer, then you must upgrade your plugin. Please uninstall the older version of the plugin first.
 
 - **:package: [Installation](#package-installation)**
 - **:earth_americas: [Languages](#earth_americas-languages)**
-- **:gear: [Settings](#gear-settings)**
+- **:gear: [Configuration](#gear-configuration)**
 - **:handshake: [Compatibility](#handshake-compatibility)**
 - **:mega: [Credits](#mega-credits)**
 
 Do you find pressing through "It's super effective!", "*[Battler]*'s Attack rose!", and other messages like them to be tedious? This PSDK plugin replaces them with concise animations to make battles feel snappier and less of a button masher.
 
 ## :package: Installation
-
 **To install:**
 1. Download `ZVBattleMessages.psdkplug` and `193208.csv` from the [newest release](https://github.com/zheczinger/psdk-modernized-battle-messages/releases/latest).
 2. Put the downloaded .psdkplug file in the `scripts` folder in your project.
@@ -31,10 +30,10 @@ If you're already using the `193208.csv` filename for a different file, then you
 3. Delete `193208.csv` or whatever you named that CSV file from the `Data/Text/Dialogs` folder in your project.
 
 ## :earth_americas: Languages
-- :us: English
-- :fr: French
+- English :us:
+- Français :fr:
 
-## :gear: Settings
+## :gear: Configuration
 The following settings are available in the `Data/configs/plugins/zv_battle_msg_config.json` file in your project.
 
 ```json
@@ -95,7 +94,7 @@ The following settings are available in the `Data/configs/plugins/zv_battle_msg_
 | **`damage_numbers`** |  [Damage Numbers](#damage-numbers) | [Damage Numbers](#damage-numbers) | Displays floating damage numbers for battlers losing or regaining health. |
 | **`silence_messages`** | [Silence Messages](#silence-messages) | *[Silence Messages](#silence-messages)* | Prevents specific messages from being shown in the battle scene's dialogue window. |
 
-#### Damage Numbers
+### Damage Numbers
 The **`damage_numbers`** field in the JSON config file expects an object with the following key-value pairs.
 
 | Key | Expected Value | Default Value | Description |
@@ -108,7 +107,7 @@ The **`damage_numbers`** field in the JSON config file expects an object with th
 | **`hurt_color`** | Integer | 9 | Color ID for health lost based on the `graphics/windowskins/_colors.png` file in your project. |
 | **`heal_color`** | Integer | 13 | Color ID for health restored based on `graphics/windowskins/_colors.png` file in your project. |
 
-#### Silence Messages
+### Silence Messages
 The **`silence_messages`** field in the JSON config file expects an object with the following key-value pairs.
 
 - **`enable`**, which is whether to enable this feature (default: `true`)
@@ -121,7 +120,7 @@ The **`silence_messages`** field in the JSON config file expects an object with 
   | **`note`** | String | An optional personal note.
 
 ## :handshake: Compatibility
-- **[Battle Log for PSDK](https://github.com/zheczinger/psdk-battle-log)**: Compatible since v0.5.1 of this plugin. Battle messages replaced or silenced by this plugin are preserved in that plugin's battle log.
+- [Battle Log for PSDK](https://github.com/zheczinger/psdk-battle-log): Compatible since v0.5.1 of this plugin. Battle messages replaced or silenced by this plugin are preserved in that plugin's battle log.
 
 ## :mega: Credits
 **Author:**
