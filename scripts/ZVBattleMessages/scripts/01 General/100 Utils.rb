@@ -15,4 +15,11 @@ module ZVBattleMsg
 
     return filename
   end
+
+  # @param method_name [Symbol]
+  # @param klass [Class]
+  # @return [Boolean]
+  def m_defined?(method_name, klass = self.class)
+    return klass.method_defined?(method_name, true) || klass.private_method_defined?(method_name, true)
+  end
 end

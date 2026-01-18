@@ -1,42 +1,39 @@
 # Modernized Battle Messages for PSDK
+![GitHub Release](https://img.shields.io/github/v/release/zheczinger/psdk-modernized-battle-messages?display_name=release&color=blue&style=for-the-badge)
+![PSDK Version](https://img.shields.io/badge/psdk-.26.50+-6961F6?style=for-the-badge)
+
 > [!WARNING]
-> If your PSDK version is 26.50 or newer, and the version of this plugin you're using is v0.4.0 or older, then you must upgrade your plugin to the latest version. Please uninstall your older version of the plugin before installing the latest.
+> If you have v0.4.0 or an older version of this plugin, and your PSDK version is .26.50 or newer, then you must upgrade your plugin. Please uninstall the older version of the plugin first.
 
-## Table of Contents
-- [Overview](#overview)
-- [Installation](#installation)
-- [Dependencies](#dependencies)
-- [Settings](#settings)
-- [Credits](#credits)
+- **:package: [Installation](#package-installation)**
+- **:earth_americas: [Languages](#earth_americas-languages)**
+- **:gear: [Configuration](#gear-configuration)**
+- **:handshake: [Compatibility](#handshake-compatibility)**
+- **:mega: [Credits](#mega-credits)**
 
-## Overview
-Do you find pressing through "It's super effective!" and other messages like it to be tedious? This PSDK plugin replaces some of them with concise animations to make battles feel snappier and less of a button masher.
+Do you find pressing through "It's super effective!", "*[Battler]*'s Attack rose!", and other messages like them to be tedious? This PSDK plugin replaces them with concise animations to make battles feel snappier and less of a button masher.
 
-## Installation
-To install:
-1. Download `ZVBattleMessages.psdkplug` and `193208.csv` from the [newest release](https://github.com/zhec9p/modernized-battle-messages/releases/latest).
+## :package: Installation
+**To install:**
+1. Download `ZVBattleMessages.psdkplug` and `193208.csv` from the [newest release](https://github.com/zheczinger/psdk-modernized-battle-messages/releases/latest).
 2. Put the downloaded .psdkplug file in the `scripts` folder in your project.
 3. Open the `cmd.bat` file in your project. This will bring up a command prompt.
 4. Enter `psdk --util=plugin load` in the command prompt.
 5. Put the downloaded .csv file in the `Data/Text/Dialogs` folder in your project.
 
-> [!NOTE]
-> If you're already using the `193208.csv` filename for a different file, then you can rename this plugin's CSV file to a different `1NNNNN.csv` file. Change the number in the `csv_id` field in this plugin's JSON config file to the `NNNNN` number you picked.
+If you're already using the `193208.csv` filename for a different file, then you can rename this plugin's CSV file to a different `1NNNNN.csv` file. Change the number in the `csv_id` field in this plugin's JSON config file to the `NNNNN` number you picked.
 
-To uninstall:
+**To uninstall:**
 1. Delete `ZVBattleMessages.psdkplug` from the `scripts` folder in your project.
 2. Open the `cmd.bat` file in your project. This will bring up a command prompt.
 3. Enter `psdk --util=plugin load` in the command prompt. Enter `Y` when asked whether to remove the files added by the plugin.
 3. Delete `193208.csv` or whatever you named that CSV file from the `Data/Text/Dialogs` folder in your project.
 
-## Dependencies
-- PSDK 26.50 or newer
+## :earth_americas: Languages
+- English :us:
+- Français :fr:
 
-## Languages
-- English
-- French
-
-## Settings
+## :gear: Configuration
 The following settings are available in the `Data/configs/plugins/zv_battle_msg_config.json` file in your project.
 
 ```json
@@ -97,7 +94,7 @@ The following settings are available in the `Data/configs/plugins/zv_battle_msg_
 | **`damage_numbers`** |  [Damage Numbers](#damage-numbers) | [Damage Numbers](#damage-numbers) | Displays floating damage numbers for battlers losing or regaining health. |
 | **`silence_messages`** | [Silence Messages](#silence-messages) | *[Silence Messages](#silence-messages)* | Prevents specific messages from being shown in the battle scene's dialogue window. |
 
-#### Damage Numbers
+### Damage Numbers
 The **`damage_numbers`** field in the JSON config file expects an object with the following key-value pairs.
 
 | Key | Expected Value | Default Value | Description |
@@ -110,7 +107,7 @@ The **`damage_numbers`** field in the JSON config file expects an object with th
 | **`hurt_color`** | Integer | 9 | Color ID for health lost based on the `graphics/windowskins/_colors.png` file in your project. |
 | **`heal_color`** | Integer | 13 | Color ID for health restored based on `graphics/windowskins/_colors.png` file in your project. |
 
-#### Silence Messages
+### Silence Messages
 The **`silence_messages`** field in the JSON config file expects an object with the following key-value pairs.
 
 - **`enable`**, which is whether to enable this feature (default: `true`)
@@ -122,13 +119,16 @@ The **`silence_messages`** field in the JSON config file expects an object with 
   | **`text_id`** | Integer | The text ID in the CSV file where the message is located
   | **`note`** | String | An optional personal note.
 
-## Credits
-#### Plugin Creator
+## :handshake: Compatibility
+- [Battle Log for PSDK](https://github.com/zheczinger/psdk-battle-log): Compatible since v0.5.1 of this plugin. Battle messages replaced or silenced by this plugin are preserved in that plugin's battle log.
+
+## :mega: Credits
+**Author:**
 - zhec
 
-#### External Assets
+**External Assets:**
 - Clock, ticking by natalie -- https://commons.wikimedia.org/wiki/File:Clock_ticking.ogg
 - BELL.wav by kgeshev -- https://freesound.org/s/378799/
 
-#### Special Thanks
-- Aelysya for the French translations
+**Thanks:**
+- [Aelysya](https://github.com/Aelysya/) for the French translations
