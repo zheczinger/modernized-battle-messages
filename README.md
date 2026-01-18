@@ -1,6 +1,7 @@
 # Modernized Battle Messages for PSDK
-![GitHub Release](https://img.shields.io/github/v/release/zheczinger/psdk-modernized-battle-messages?display_name=release&color=blue&style=for-the-badge)
-![PSDK Version](https://img.shields.io/badge/psdk-.26.50+-6961F6?style=for-the-badge)
+![Release][release-badge]
+![PSDK Version][psdk-version-badge]
+![Download Total][download-total-badge]
 
 > [!WARNING]
 > If you have v0.4.0 or an older version of this plugin, and your PSDK version is .26.50 or newer, then you must upgrade your plugin. Please uninstall the older version of the plugin first.
@@ -11,7 +12,7 @@
 - **:handshake: [Compatibility](#handshake-compatibility)**
 - **:mega: [Credits](#mega-credits)**
 
-Do you find pressing through "It's super effective!", "*[Battler]*'s Attack rose!", and other messages like them to be tedious? This PSDK plugin replaces them with concise animations to make battles feel snappier and less of a button masher.
+Do you find pressing through "It's super effective!", "\[Battler\]'s Attack rose!", and other messages like them to be tedious? This PSDK plugin replaces them with concise animations to make battles feel snappier and less of a button masher.
 
 ## :package: Installation
 **To install:**
@@ -132,3 +133,7 @@ The **`silence_messages`** field in the JSON config file expects an object with 
 
 **Thanks:**
 - [Aelysya](https://github.com/Aelysya/) for the French translations
+
+[release-badge]: https://img.shields.io/github/v/release/zheczinger/psdk-modernized-battle-messages?display_name=release&logo=github&color=blue
+[psdk-version-badge]: https://img.shields.io/badge/PSDK-.26.50+-6961F6
+[download-total-badge]: https://img.shields.io/github/downloads/zheczinger/psdk-modernized-battle-messages/total?logo=github
