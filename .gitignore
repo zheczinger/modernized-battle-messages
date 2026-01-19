@@ -7,7 +7,7 @@
 audio/*
 !audio/se
 audio/se/*
-!audio/se/zv-battle-messages
+!audio/se/zv-battle-messages-*
 
 !Data
 Data/*
