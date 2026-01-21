@@ -121,7 +121,7 @@ The **`silence_messages`** field in the JSON config file expects an object with 
   | **`note`** | String | An optional personal note.
 
 ## :handshake: Compatibility
-- [Battle Log for PSDK](https://github.com/zheczinger/battle-log): Compatible since v0.5.3 of this plugin. Battle messages replaced or silenced by this plugin are preserved in that plugin's battle log.
+- [Battle Log for PSDK](https://github.com/zheczinger/battle-log): Compatible since v0.5.4 of this plugin. Battle messages replaced or silenced by this plugin are preserved in that plugin's battle log.
 
 ## :mega: Credits
 See [LICENSE](LICENSE.md).
