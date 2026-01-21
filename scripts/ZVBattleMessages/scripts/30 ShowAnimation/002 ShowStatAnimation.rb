@@ -12,7 +12,7 @@ module BattleUI
         aura  = UI::StatAnimation.new(viewport, amount, z, @bank) unless out_of_reach
         popup = ZVBattleMsg::StatChangePopup.new(viewport, @scene, self, stat, amount)
         anims = [
-          ya.se_play(stat_se(amount)),
+          ya.send_command_to($game_system, :se_play, stat_se(amount)),
           ya.player(popup.create_animation, ya.dispose_sprite(popup))
         ]
 
