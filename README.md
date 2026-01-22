@@ -12,6 +12,10 @@
 - **:handshake: [Compatibility](#handshake-compatibility)**
 - **:mega: [Credits](#mega-credits)**
 
+[demo.webm](https://github.com/user-attachments/assets/927621e1-22f1-4eb4-91f5-53f062f7dbe7)
+
+*<sup>Attribution: [Sprite Sheet w/ Backsprites w/ Shinies \[WIP\]](https://www.deviantart.com/magiscarf/art/Sprite-Sheet-w-Backsprites-w-Shinies-WIP-834432339) by [Magiscarf](https://www.deviantart.com/magiscarf/gallery), licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/). Used for demonstration purposes.</sup>*
+
 Do you find pressing through "It's super effective!", "\[Battler\]'s Attack rose!", and other messages like them to be tedious? This PSDK plugin replaces them with concise animations to make battles feel snappier and less of a button masher.
 
 ## :package: Installation
