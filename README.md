@@ -12,7 +12,7 @@
 - **:handshake: [Compatibility](#handshake-compatibility)**
 - **:mega: [Credits](#mega-credits)**
 
-[demo.webm](https://github.com/user-attachments/assets/927621e1-22f1-4eb4-91f5-53f062f7dbe7)
+https://github.com/user-attachments/assets/b064a49f-baaa-4cfb-a349-cb5decb47e26
 
 *<sup>Attribution: [Sprite Sheet w/ Backsprites w/ Shinies \[WIP\]](https://www.deviantart.com/magiscarf/art/Sprite-Sheet-w-Backsprites-w-Shinies-WIP-834432339) by [Magiscarf](https://www.deviantart.com/magiscarf/gallery), licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/). Used for demonstration purposes.</sup>*
 
