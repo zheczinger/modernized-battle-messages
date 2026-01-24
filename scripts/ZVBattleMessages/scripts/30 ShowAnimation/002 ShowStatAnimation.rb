@@ -22,8 +22,6 @@ module BattleUI
             ya.scalar(popup.main_duration + 0.2, aura, :animation_progression=, 0, 1),
             ya.dispose_sprite(aura)
           )
-
-          popup.z = [popup.z, aura.z + 1].max
         end
 
         anim = ya.parallel(*anims)

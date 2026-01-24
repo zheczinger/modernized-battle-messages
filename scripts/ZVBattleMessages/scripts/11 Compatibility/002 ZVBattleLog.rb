@@ -1,7 +1,7 @@
-# zhec's Battle Log
-# https://github.com/zheczinger/psdk-battle-log
 module Battle
   class Scene
+    # zhec's Battle Log
+    # https://github.com/zheczinger/psdk-battle-log
     module ZVBattleMsgZVBattleLog
       def zv_log_message(...) = nil unless
         Scene.method_defined?(:zv_log_message, true) ||

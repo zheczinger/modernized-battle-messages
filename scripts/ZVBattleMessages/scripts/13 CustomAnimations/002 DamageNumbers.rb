@@ -21,14 +21,15 @@ module ZVBattleMsg
       self.opacity = 0
     end
 
+    # @param extra_duration [Float]
     # @return [Yuki::Animation::AnimationMixin]
     # @note This animation doesn't dispose
-    def create_animation
+    def create_animation(extra_duration: 0)
       ya = Yuki::Animation
 
       return ya.player(
         number_animation,
-        ya.wait(wait_duration),
+        ya.wait(wait_duration + extra_duration),
         ya.send_command_to(self, :opacity=, 0)
       )
     end
