@@ -38,8 +38,8 @@ module ZVBattleMsg
 
     # Move the sprite stack to the target sprite's location
     def move_to_target
-      self.x = @target_sprite.x + x_offset
-      self.y = @target_sprite.y + y_offset
+      self.x = (@target_sprite.x + x_offset).to_i
+      self.y = (@target_sprite.y + y_offset).to_i
     end
 
     # Draw text for the damage value
