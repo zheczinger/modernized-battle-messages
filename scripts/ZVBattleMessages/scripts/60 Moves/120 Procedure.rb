@@ -24,9 +24,14 @@ module Battle
       def usage_message(user, *_args, **_kwargs)
         return super unless Configs.zv_battle_msg.replace_move_usage
 
-        @scene.visual.hide_team_info
-        @scene.zv_log_move_usage_message(user, self)
-        @scene.visual.show_move_usage(self)
+        scene.visual.hide_team_info
+        message = parse_text_with_pokemon(
+          8999 - Studio::Text::CSV_BASE, 12, user,
+          PFM::Text::PKNAME[0] => user.given_name, PFM::Text::MOVE[0] => name
+        )
+
+        scene.zv_log_message(message)
+        scene.visual.show_move(self)
       end
 
       def accuracy_immunity_test(user, targets)

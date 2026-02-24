@@ -1,15 +1,11 @@
 module ZVBattleMsg
-  class MoveUsageBarAnimation < UI::SpriteStack
+  class UsageBar < UI::SpriteStack
     include Offsets3D
     include HideShow
 
     # @param viewport [Viewport]
-    # @param scene [Battle::Scene]
-    # @param move [Battle::Move]
-    def initialize(viewport, scene)
+    def initialize(viewport)
       super(viewport, default_cache: :interface)
-      @scene = scene
-
       create_background
       create_icon
       create_text
@@ -18,13 +14,8 @@ module ZVBattleMsg
     # @param move [Battle::Move]
     def data=(move)
       super(move.user)
-      @user_name = move.user.given_name
-      @move_name = move.name
-    end
-
-    # Create the animation
-    def create_animation
-      @animation_handler = Yuki::Animation::Handler.new
+      @user_name = user_name(move)
+      @action_name = move.name
     end
 
     # Update the animations
@@ -40,23 +31,31 @@ module ZVBattleMsg
 
     private
 
+    def create_animation
+      @animation_handler = Yuki::Animation::Handler.new
+    end
+
     def create_background
       @background = add_sprite(0, 0, NO_INITIAL_IMAGE, type: Background)
     end
 
     def create_icon
-      add_sprite(*icon_coordinates, NO_INITIAL_IMAGE, false, type: PokemonIconSprite)
+      return unless config.user_icon.display
+
+      add_sprite(*icon_position, NO_INITIAL_IMAGE, false, type: icon_class)
     end
 
     def create_text
       dimensions = [0, nil]
 
-      with_font(user_font_id) do
-        add_text(*user_text_coordinates, *dimensions, :user_name, color: user_color_id, type: SymText)
+      if config.move_name.display
+        with_font(user_font_id) do
+          add_text(*user_position, *dimensions, :user_name, color: user_color_id, type: SymText)
+        end
       end
 
-      with_font(move_font_id) do
-        add_text(*move_text_coordinates, *dimensions, :move_name, color: move_color_id, type: SymText)
+      with_font(action_font_id) do
+        add_text(*action_position, *dimensions, :action_name, color: action_color_id, type: SymText)
       end
     end
 
@@ -79,12 +78,25 @@ module ZVBattleMsg
       end
     end
 
-    def icon_coordinates = [2, 1]
-    def user_text_coordinates = [39, 0]
-    def user_font_id  = 20
-    def user_color_id = 9
-    def move_text_coordinates = [39, Fonts.line_height(user_font_id) + 2]
-    def move_font_id  = 0
-    def move_color_id = 9
+    def config          = Configs.zv_battle_msg.replace_move_usage
+    def icon_position   = config.user_icon.relative_position
+    def user_font_id    = config.user_name.font_id
+    def user_color_id   = config.user_name.color_id
+    def user_position   = config.user_name.relative_position
+    def action_font_id  = config.action_name.font_id
+    def action_color_id = config.action_name.color_id
+    def action_position = config.action_name.relative_position
+
+    def icon_class = Sprite
+    def user_name(action) = nil
+  end
+
+  class MoveUsageBar < UsageBar
+    def icon_class = PokemonIconSprite
+    def user_name(action) = action.user.given_name
+  end
+
+  class ItemUsageBar < UsageBar
+    def icon_class =
   end
 end

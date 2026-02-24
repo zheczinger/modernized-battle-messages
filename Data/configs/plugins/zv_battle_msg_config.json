@@ -38,5 +38,25 @@
         "note": "standard energy drain"
       }
     ]
+  },
+
+  "replace_move_usage": {
+    "enable": true,
+    "position": [40, 280],
+    "move_name": {
+      "font_id": 0,
+      "color_id": 9,
+      "relative_position": [30, 16]
+    },
+    "user_icon": {
+      "display": true,
+      "relative_position": [0, 0]
+    },
+    "user_name": {
+      "display": true,
+      "font_id": 20,
+      "color_id": 9,
+      "relative_position": [30, 0]
+    }
   }
 }

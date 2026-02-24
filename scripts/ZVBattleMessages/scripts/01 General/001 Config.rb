@@ -35,15 +35,29 @@ module Configs
         # @return [Integer]
         attr_reader :heal_color
 
-        # @param settings [Hash]
-        def initialize(settings)
-          @enable       = settings[:enable]
-          @measurement  = settings[:measurement].to_sym
-          @unit_text    = settings[:unit_text]
-          @font_id      = settings[:font_id]
-          @outline_size = settings[:outline_size]
-          @hurt_color   = settings[:hurt_color]
-          @heal_color   = settings[:heal_color]
+        # @param enable [Boolean]
+        # @param measurement [String]
+        # @param unit_text [String]
+        # @param font_id [Integer]
+        # @param outline_size [Integer]
+        # @param hurt_color [Integer]
+        # @param heal_color [Integer]
+        def initialize(
+          enable: true,
+          measurement: :percent,
+          unit_text: '',
+          font_id: 0,
+          outline_size: 1,
+          hurt_color: 9,
+          heal_color: 13
+        )
+          @enable       = enable
+          @measurement  = measurement.to_sym
+          @unit_text    = unit_text
+          @font_id      = font_id
+          @outline_size = outline_size
+          @hurt_color   = hurt_color
+          @heal_color   = heal_color
 
           raise 'Invalid measurement choice' unless MEASUREMENTS.include?(@measurement)
         end
@@ -60,10 +74,11 @@ module Configs
           # @return [Integer]
           attr_reader :text_id
 
-          # @param v [Hash]
-          def initialize(v)
-            @csv_id  = v[:csv_id]
-            @text_id = v[:text_id]
+          # @param csv_id [Integer]
+          # @param text_id [Integer]
+          def initialize(csv_id:, text_id:)
+            @csv_id  = csv_id
+            @text_id = text_id
           end
         end
 
@@ -75,10 +90,113 @@ module Configs
         # @return [Array<Message>]
         attr_reader :messages
 
-        # @param settings [Array<Hash>]
-        def initialize(settings)
-          @enable = settings[:enable]
-          @messages = settings[:messages].map { |h| Message.new(h) }
+        # @param enable [Boolean]
+        # @param messages [Array<Hash>]
+        def initialize(messages:, enable: true)
+          @enable = enable
+          @messages = messages.map { |h| Message.new(**h) }
+        end
+      end
+
+      # Class to manage replacement settings for the move usage message
+      class ReplaceMoveUsage
+        class MoveName
+          # Font ID for the move's name
+          # @return [Integer]
+          attr_reader :font_id
+
+          # Color ID for the name of the move's user
+          attr_reader :color_id
+
+          # Position of the move's name relative to the move's UI bar
+          # @return [Array<Integer>]
+          attr_reader :relative_position
+
+          # @param font_id [Integer]
+          # @param color_id [Integer]
+          # @param relative_position [Array<Integer>]
+          def initialize(font_id: 0, color_id: 9, relative_position: [30, 16])
+            @font_id = font_id
+            @relative_position = relative_position
+          end
+        end
+
+        class UserIcon
+          # Show the icon of the move's user?
+          # @return [Boolean]
+          attr_reader :display
+
+          # Position of the icon relative to the move's UI bar
+          # @return [Array<Integer>]
+          attr_reader :relative_position
+
+          # @param display [Boolean]
+          # @param relative_position [Array<Integer>]
+          def initialize(display: true, relative_position: [0, 0])
+            @display = display
+            @relative_position = relative_position
+          end
+        end
+
+        class UserName
+          # Show the name of the move's user?
+          # @return [Boolean]
+          attr_reader :display
+
+          # Font ID for the name of the move's user
+          # @return [Integer]
+          attr_reader :font_id
+
+          # Color ID for the name of the move's user
+          attr_reader :color_id
+
+          # Position of the name relative to the move's UI bar
+          # @return [Array<Integer>]
+          attr_reader :relative_position
+
+          # @param display [Boolean]
+          # @param font_id [Integer]
+          # @param color_id [Integer]
+          # @param relative_position [Array<Integer>]
+          def initialize(display: true, font_id: 20, color_id: 9, relative_position: [30, 0])
+            @display = display
+            @font_id = font_id
+            @relative_position = relative_position
+          end
+        end
+
+        # Is this enabled?
+        # @return [Boolean]
+        attr_reader :enable
+
+        # Position of the move's UI bar
+        # @return [Array<Integer>]
+        attr_reader :position
+
+        # Settings for the move's name in the move's UI bar
+        # @return [MoveName]
+        attr_reader :move_name
+
+        # Settings for the icon of the move's user in the move's UI bar
+        # @return [UserIcon]
+        attr_reader :user_icon
+
+        # Settings for the name of the move's user in the move's UI bar
+        # @return [UserName]
+        attr_reader :user_name
+
+        def initialize(
+          enable: true,
+          position: [40, 280],
+          move_name: {},
+          user_icon: {},
+          user_name: {}
+        )
+          @enable    = enable
+          @position  = position
+          @move_name = MoveName.new(**move_name)
+          @user_icon = UserIcon.new(**user_icon)
+          @user_name = UserName.new(**user_name)
         end
       end
 
@@ -117,24 +235,30 @@ module Configs
       # @return [Boolean]
       attr_accessor :replace_perish
 
-      # Replace the messages displayed when a battler uses a move or when the move fails?
-      # @return [Boolean]
-      attr_accessor :replace_move_usage
-
       # Damage popup numbers settings
-      # @return [Configs::Project::ZVBattleMsg::DamageNumbers]
+      # @return [DamageNumbers]
       attr_reader :damage_numbers
+
+      # Settings for replacing a move usage message
+      # @return [ReplaceMoveUsage]
+      attr_reader :replace_move_usage
 
       # Set damage popup numbers settings
       # @param settings [Hash]
       def damage_numbers=(settings)
-        @damage_numbers = DamageNumbers.new(settings)
+        @damage_numbers = DamageNumbers.new(**settings)
       end
 
       # Set battle scene messages to silence
       # @param settings [Hash]
       def silence_messages=(settings)
-        @silence_messages = SilenceMessages.new(settings)
+        @silence_messages = SilenceMessages.new(**settings)
+      end
+
+      # Set settings for replacing the move usage message
+      # @param settings [Hash]
+      def replace_move_usage=(settings)
+        @replace_move_usage = ReplaceMoveUsage.new(**settings)
       end
 
       # Check if a battle scene message should be silenced
@@ -185,20 +309,11 @@ module Configs
         self.replace_miss          = true
         self.replace_stat_change   = true
         self.replace_perish        = true
-        self.replace_move_usage    = true
 
-        self.damage_numbers = {
-          enable: true,
-          measurement: :percent,
-          unit_text: '',
-          font_id: 0,
-          outline_size: 1,
-          hurt_color: 9,
-          heal_color: 13
-        }
+        self.damage_numbers = {}
+        self.replace_move_usage = {}
 
         self.silence_messages = {
-          enable: true,
           messages: [
             {
               csv_id: 19,
