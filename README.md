@@ -21,18 +21,18 @@ Do you find pressing through "It's super effective!", "\[Battler\]'s Attack rose
 ## :package: Installation
 **To install:**
 1. Download `ZVBattleMessages.psdkplug` and `193208.csv` from the [newest release](https://github.com/zheczinger/modernized-battle-messages/releases/latest).
-2. Put the downloaded .psdkplug file in the `scripts` folder in your project.
+2. Place the downloaded .psdkplug file in the `scripts` folder in your project.
 3. Open the `cmd.bat` file in your project. This will bring up a command prompt.
 4. Enter `psdk --util=plugin load` in the command prompt.
-5. Put the downloaded .csv file in the `Data/Text/Dialogs` folder in your project.
+5. Place the downloaded .csv file in the `Data/Text/Dialogs` folder in your project.
 
-If you're already using the `193208.csv` filename for a different file, then you can rename this plugin's CSV file to a different `1NNNNN.csv` file. Change the number in the `csv_id` field in this plugin's JSON config file to the `NNNNN` number you picked.
+If you're already using the `193208.csv` filename for something else, then you can rename this plugin's CSV file to different `1NNNNN.csv` files. Change the number in the `csv_id` and field in this plugin's JSON config file to the `NNNNN` numbers you picked.
 
 **To uninstall:**
 1. Delete `ZVBattleMessages.psdkplug` from the `scripts` folder in your project.
 2. Open the `cmd.bat` file in your project. This will bring up a command prompt.
 3. Enter `psdk --util=plugin load` in the command prompt. Enter `Y` when asked whether to remove the files added by the plugin.
-3. Delete `193208.csv` or whatever you named that CSV file from the `Data/Text/Dialogs` folder in your project.
+3. Delete `193208.csv` (or whatever you named the CSV file) from the `Data/Text/Dialogs` folder in your project.
 
 ## :earth_americas: Languages
 - English :us:
@@ -40,6 +40,27 @@ If you're already using the `193208.csv` filename for a different file, then you
 
 ## :gear: Configuration
 The following settings are available in the `Data/configs/plugins/zv_battle_msg_config.json` file in your project.
+
+### csv_id
+
+ID of this plugin's CSV file. By default, it's 93208.
+
+### prefix
+
+The purpose of this setting is to tell the plugin to use your custom asset files. This prevents the need to overwrite the plugin's provided assets with yours and risking deletion of your custom assets when reinstalling or uninstalling this plugin.
+
+Subfolder name for this plugin's animation assets. For example, if you set **prefix** to "zv-battle-messages", then the plugin will pull graphics files from the `graphics/animations/zv-battle-messages/` folder. The default subfolder name is "zv-battle-messages".
+
+Filename prefix for this plugin's SE assets, followed by a `-` character. For example, if you set `prefix` to `"zv-battle-messages"`, then the plugin will pull SE files that begin with `zv-battle-messages-` from the `audio/se/` folder.
+
+
+
+- **Expected value:** String
+- **Default value:** "zv-battle-messages"
+
+### replace_effectiveness
+
+#### replace_effectiveness.enable
 
 ```json
 {

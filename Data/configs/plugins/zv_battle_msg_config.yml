@@ -1,0 +1,182 @@
+#######
+# Common field names and their meanings:
+#   - enable: Whether to enable this feature.
+#   - text_id: Text ID from the plugin's CSV file for the popup text.
+#######
+
+# ID of this plugin's CSV file.
+csv_id: 93208
+
+# Custom identifier (prefix) to tell the plugin to use your own graphics and SFX
+# instead of this plugin's. This keeps your custom files separate and safe from
+# being accidentally deleted during plugin uninstallation.
+#
+# For example, if set to "zv-battle-messages" (the default):
+#   - Graphic files are loaded from `graphics/animations/zv-battle-msg/`
+#   - SE files starting with zv-battle-msg- are loaded from `audio/se/` (e.g.,
+#     zv-battle-msg-hit.ogg)
+prefix: zv_battle_msg
+
+common:
+  font_id: 20
+  text_color: 9
+  background: default
+  animation: rise
+
+# Floating damage numbers for battlers losing or restoring health.
+show_damage_numbers:
+  enable: true
+
+  # How damage numbers are represented.
+  measurement:
+    # Choose one:
+    #   - percent: Percentage rounded to the nearest whole number, e.g., 25%.
+    #   - points: An exact HP quantity, e.g. 50HP.
+    style: percent
+
+    # Text ID for showing the unit of measurement.
+    #   - 0  => %
+    #   - 1  => HP
+    #   - 2 => (unitless)
+    text_id: 0
+
+  # Color ID for health lost based on `graphics/windowskins/_colors.png`.
+  hurt_color: 9
+
+  # Color ID for health restored based on `graphics/windowskins/_colors.png`.
+  heal_color: 13
+
+# Custom animation for type effectiveness hits (replacing dialogue messages).
+# This does not include immunities, which are handled by `replace_unaffected`.
+replace_effectiveness:
+  enable: true
+
+  # 4x
+  extremely_effective:
+    text_id: 3
+
+  # 2x
+  super_effective:
+    text_id: 4
+
+  # 0.5x
+  not_very_effective:
+    text_id: 5
+
+  # 0.25x
+  mostly_ineffective:
+    text_id: 6
+
+# Popup for a move not affecting a target (replacing dialogue messages).
+replace_unaffected:
+  enable: true
+  text_id: 7
+  icon: no_effect
+  animation: flicker
+
+# Popup for a critical hit (replacing dialogue messages).
+replace_critical_hit:
+  enable: true
+  text_id: 9
+
+# Popups for stat stage changes (replacing dialogue messages).
+replace_stat_change:
+  # Enabling this will also tie the speed and duration of the stat change
+  # animation to the popup.
+  enable: true
+
+  # Popup animation db symbols for stat stage changes
+  stat_up_animation: rise
+  stat_down_animation: fall
+
+  # Attack
+  atk:
+    text_id: 10
+    icon: stat_change_atk
+
+  # Defense
+  dfe:
+    text_id: 11
+    icon: stat_change_dfe
+
+  # Speed
+  spe:
+    text_id: 12
+    icon: stat_change_spe
+
+  # Special Attack
+  ats:
+    text_id: 13
+    icon: stat_change_ats
+
+  # Special Defense
+  dfs:
+    text_id: 14
+    icon: stat_change_dfs
+
+  # Accuracy
+  acc:
+    text_id: 15
+    icon: stat_change_acc
+
+  # Evasion
+  eva:
+    text_id: 16
+    icon: stat_change_eva
+
+# Popups for a move being used or failing (replacing dialogue messages). Move
+# usage failure is not the same as a move missing or not affecting targets.
+replace_move_usage:
+  enable: true
+
+  # Popup text about the move's user.
+  #   - text_id+0 => Player's creature
+  #   - text_id+1 => Opposing creature
+  #   - text_id+2 => Wild creature
+  move_user:
+    text_id: 17
+
+  # Popup text to add if the move fails.
+  move_failure:
+    text_id: 20
+    color: 1 # Color ID for the text
+
+# Popup for a battler being inflicted with a status condition (replacing
+# dialogue messages).
+replace_status:
+  enable: true
+  text_id: 21
+  icon: confused
+
+# Popup for a missed move (replacing dialogue messages).
+replace_miss:
+  enable: true
+  text_id: 8
+
+# Popup for perish counts (replacing dialogue messages).
+replace_perish:
+  enable: true
+
+# Popup for Aqua Ring procs (replacing dialogue messages).
+replace_aqua_ring:
+  enable: true
+  text_id: 22
+  icon: aqua_ring
+
+# Prevent specific battle dialogue messages from being shown.
+silence_messages:
+  enable: true
+
+  # List of forbidden messages:
+  messages:
+    - csv_id: 19   # ID of the CSV file that contains the message.
+      text_id: 243 # Text ID in the CSV file where the message is located.
+      memo: poison/toxic status end of turn # Optional memo not shown in-game.
+
+    - csv_id: 19
+      text_id: 261
+      memo: burn status end of turn
+
+    - csv_id: 19
+      text_id: 905
+      memo: standard energy drain

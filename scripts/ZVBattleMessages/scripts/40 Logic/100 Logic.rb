@@ -1,11 +1,12 @@
 module Battle
   class Logic
     module ZVBattleMsgLogic
-      attr_reader :zv_battle_msg_internal
+      attr_reader :zv_temp_state
 
+      # [psdk-override]
       def initialize(...)
         super
-        @zv_battle_msg_internal = ZVBattleMsg::BattleMsgTemp.new
+        @zv_temp_state = ZVBattleMsg::TempState.new
       end
     end
     prepend ZVBattleMsgLogic

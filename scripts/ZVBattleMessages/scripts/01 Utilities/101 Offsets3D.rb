@@ -1,5 +1,7 @@
 module ZVBattleMsg
   module Offsets3D
+    private
+
     # @return [Integer]
     def x_offset
       offset = position_offsets[@target_sprite.bank][0]
